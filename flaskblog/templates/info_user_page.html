@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Personal Information
+{% endblock %}
+
+{% block content %}
+<ul>
+  <li>Username: {{ user.username }}</li>
+  <li>Email Address: {{ user.email_address }}</li>
+</ul>
+
+<h3>All Posts have been created by {{ user.username }}</h3>
+<hr>
+<table class="table">
+<thead>
+    <tr>
+      <th scope="col">Post ID</th>
+      <th scope="col">Name Post</th>
+      <th scope="col">Created at</th>
+      <th scope="col">Option</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+{% for pos in post %}
+  <tr>
+    <th scope="row">{{ pos.id }}</th>
+    <td>{{ pos.name_post}}</td>
+    <td>{{ pos.time_stamp}}</td>
+    <td><form method="POST">
+      {{ viewpost.hidden_tag() }}
+      <input id="detailed-view" name="detailed-view" type="hidden" value="{{ pos.id }}">
+
+      {{ viewpost.submit(class = "btn btn-primary btn-sm btn-block") }}
+    </form></td>
+
+  </tr>
+  {% endfor %}
+ </tbody>
+</table>
+{% endblock %}

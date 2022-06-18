@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+Register Page
+{% endblock %}
+
+
+{% block content %}
+<body class = "text-center">
+<div class = "container">
+<form class="form-register" method = "POST" >
+    {{ form_register.hidden_tag() }}
+{{ form_register.username.label() }}
+{{ form_register.username(class="form-control", placeholder="Username:")}}
+
+{{ form_register.email_address.label() }}
+{{ form_register.email_address(class="form-control", placeholder="Email Address:")}}
+
+{{ form_register.password1.label() }}
+{{ form_register.password1(class="form-control", placeholder="Password:")}}
+
+{{ form_register.password2.label() }}
+{{ form_register.password2(class="form-control", placeholder="Confirm Password:")}}
+    <br>
+    {{ form_register.submit(class = "btn btn-primary btn-lg btn-block") }}
+</form>
+</div>
+</body>
+
+
+{% endblock %}

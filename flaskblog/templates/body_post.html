@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title%}
+Body Post
+{% endblock %}
+
+{% block content %}
+<div class="container"><p>{{ body }}</p>
+<a class = "btn btn-primary btn-block btn-sm" href="{{ url_for('posts_page') }}">Back To</a>
+</div>
+
+{% endblock %}

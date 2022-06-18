@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title%}
+Posts
+{% endblock %}
+
+{% block content %}
+<h3>All Posts were created by Users</h3>
+<hr>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Post ID</th>
+      <th scope="col">Name Post</th>
+      <th scope="col">Author</th>
+      <th scope="col">Created at</th>
+      <th scope="col">Option</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+  {% for post in posts %}
+  <tr>
+    <th scope="row">{{ post.id }}</th>
+    <td>{{ post.name_post}}</td>
+    {% if post.user_id %}
+    <td>{{ post.author.username }}</td>
+    {% else %}
+    <td>Unknown</td>
+    {% endif %}
+    <td>{{ post.time_stamp}}</td>
+    <td><form method="POST">
+      {{ viewpost.hidden_tag() }}
+      <input id="detailed-view" name="detailed-view" type="hidden" value="{{ post.id }}">
+
+      {{ viewpost.submit(class = "btn btn-primary btn-sm btn-block") }}
+    </form></td>
+
+  </tr>
+  {% endfor %}
+
+
+  </tbody>
+</table>
+{% endblock %}
